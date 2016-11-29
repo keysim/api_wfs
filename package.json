@@ -1,5 +1,7 @@
 {
-  "name": "api_audrey",
+  "name": "api_wfs",
+  "version": "0.0.1",
+  "description": "API of Web full stack",
   "main": "app.js",
   "dependencies": {
     "body-parser": "^1.15.0",
@@ -12,5 +14,27 @@
     "multer": "^1.2.0",
     "easyimage":"2.1.0",
     "imagemagick": "0.1.3"
-  }
+  },
+  "devDependencies": {},
+  "scripts": {
+    "stop": "kill $(cat my.pid)",
+    "start": "node WFS_API.js > stdout.txt 2> stderr.txt & echo $! > my.pid",
+    "test": "node WFS_API.js",
+    "mongod":"mongod --dbpath=db/data --nojournal;"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+http://github.com/keysim/api_wfs.git"
+  },
+  "keywords": [
+    "home",
+    "api",
+    "eip"
+  ],
+  "author": "Keysim",
+  "license": "ISC",
+  "bugs": {
+    "url": "http://github.com/keysim/api_wfs/issues"
+  },
+  "homepage": "http://github.com/keysim/api_wfs#readme"
 }
