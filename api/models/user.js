@@ -60,7 +60,7 @@ module.exports = {
     
     				res.json({
     					success: true,
-    					message: 'Enjoy your token!',
+    					message: 'Success!',
     					token: token,
     					id: user.id
     				});
