@@ -9,6 +9,19 @@ var morgan      = require('morgan');
 var mongoose    = require('mongoose');
 var config		= require('./api/config');
 var routes		= require('./api/routes');
+var http		= require('http').Server(app);
+var io			= require('socket.io')(http);
+
+io.on('connection', function(socket){
+	console.log("CONNEXION");
+	socket.on('chat message', function(msg){
+		io.emit('chat message', msg);
+	});
+});
+
+http.listen(5252, function(){
+	console.log('listening on *:5252');
+});
 
 // =================================================================
 // configuration ===================================================
