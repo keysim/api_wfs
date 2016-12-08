@@ -5,7 +5,7 @@ var config = {
     db : {url:'mongodb://vps340264.ovh.net:27017/wfs', port:27017, name:'wfs'}, // launch "mongod" then take port and host printed in the command line.
     model:{
         user:{
-            email: {type: String, required: true},
+            login: {type: String, required: true},
             password: {type: String, required: true},
             description: String
         },
