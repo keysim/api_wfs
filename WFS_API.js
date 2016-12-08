@@ -16,11 +16,12 @@ io.on('connection', function(socket){
 	console.log("CONNEXION");
 	socket.on('chat message', function(msg){
 		io.emit('chat message', msg);
+		console.log("received and emited ! :", msg);
 	});
 });
 
 http.listen(5252, function(){
-	console.log('listening on *:5252');
+	console.log('Sockets listen on port 5252');
 });
 
 // =================================================================
