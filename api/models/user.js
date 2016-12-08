@@ -9,20 +9,20 @@ module.exports = {
     // =================================================================
     register : function(req, res) {
     	User.findOne({
-    		email: req.body.email
+    		login: req.body.login
     	}, function(err, user) {
     		if (err) {
     			res.json({success: false, message:err});
     			return console.error(err);
     		}
     		if (user) {
-    			res.json({ success: false, message: 'Registration failed. Email already taken.' });
+    			res.json({ success: false, message: 'Registration failed. Login already taken.' });
     		} else if (!user) {
     			if(String(req.body.password).length < 4 || String(req.body.password).length > 20)
     				res.json({ success: false, message: 'Password wrong. It have to be between 6 and 20 characters' });
     			else {
     				user = new User({
-						email: req.body.email,
+						login: req.body.login,
     					password: req.body.password
     				});
     				user.save(function(err) {
@@ -41,7 +41,7 @@ module.exports = {
     authenticate : function(req, res) {
     	console.log(req.body);
     	User.findOne({
-			email: req.body.email
+			login: req.body.login
     	}, function(err, user) {
     		if (err) {
     			res.json({success: false, message:err});
@@ -75,9 +75,9 @@ module.exports = {
     	    return res.status(403).send({success: false, message: 'No token provided.'});
         try {
             var decoded = jwt.decode(token, config.secret);
-            console.log(decoded._doc.email);
+            console.log(decoded._doc.login);
             User.findOne({
-				email: decoded._doc.email
+				login: decoded._doc.login
             }, function(err, user) {
             	if(err || !user)
             		return res.status(403).send({ success: false, message: 'Db error or token invalid.' });
@@ -119,7 +119,7 @@ module.exports = {
     
     updateUser : function(req, res) {
     	var data = utils.mask_obj(req.body, config.model.user);
-    	User.update({email: req.user.email}, {$set : data}
+    	User.update({login: req.user.login}, {$set : data}
         , {upsert: true, setDefaultsOnInsert: true}
         , function(err, result){
             if (err) {
