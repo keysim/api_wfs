@@ -7,7 +7,7 @@ var config = {
         user:{
             login: {type: String, required: true},
             password: {type: String, required: true},
-            description: String
+            type: {type: String, default:"client"}
         },
         product:{
             seller: String,

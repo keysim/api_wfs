@@ -61,6 +61,7 @@ module.exports = {
     				res.json({
     					success: true,
     					message: 'Success!',
+						type: user.type,
     					token: token,
     					id: user.id
     				});
