@@ -6,7 +6,8 @@ var multer      = require('multer');
 
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, '/static/images');
+        cb(null, './static/images');
+
         //modify upload dest
     },
     filename: function (req, file, cb) {
@@ -20,6 +21,7 @@ var type = upload.array('files[]');
 var routes = express.Router();
 
 routes.post('/upload',type,function(req,res){
+
     res.sendStatus(200);
 });
 
