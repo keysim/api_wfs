@@ -1,9 +1,27 @@
 var express 	= require('express');
 var user        = require('./models/user');
-var product      = require('./models/product');
-var upload      = require('./models/upload');
+var product     = require('./models/product');
+//var upload      = require('./models/upload');
+var multer      = require('multer');
+
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, '/static/images');
+        //modify upload dest
+    },
+    filename: function (req, file, cb) {
+        cb(null, file.originalname);
+        //modify file name
+    }
+});
+var upload = multer({ "storage": storage });
+var type = upload.array('files[]');
 
 var routes = express.Router();
+
+routes.post('/upload',type,function(req,res){
+    res.sendStatus(200);
+});
 
 routes.post("/register", user.register);
 routes.post("/authenticate", user.authenticate);
@@ -25,6 +43,6 @@ routes.get("/user",             user.getUser);                  // Get the curre
 
 routes.post("/product",         product.postProduct);           // Post a new product
 routes.get("/product/:id",      product.updateProduct);         // Post a new product
-routes.post("/upload",          upload.upload);                 // Upload thumbnail
+//routes.post("/upload",          upload.upload);                 // Upload thumbnail
 
 module.exports = routes;
