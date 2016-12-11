@@ -21,7 +21,7 @@ var type = upload.array('files[]');
 var routes = express.Router();
 
 routes.post('/upload',type,function(req,res){
-
+    console.log(req.body);
     res.sendStatus(200);
 });
 
