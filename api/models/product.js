@@ -29,7 +29,7 @@ module.exports = {
     	var data = utils.mask_obj(req.body, config.model.product);
     	data.seller = req.user._id;
 		var options = {
-			src: "/static/images/" + data.thumbnail, dst: "/static/thumbnails/" + data.thumbnail,
+			src: "./static/images/" + data.thumbnail, dst: "./static/thumbnails/" + data.thumbnail,
 			width:100, height:100
 		};
 		easyimg.thumbnail(options).then(
