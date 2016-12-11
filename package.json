@@ -21,7 +21,8 @@
     "stop": "kill $(cat my.pid)",
     "start": "node WFS_API.js > stdout.txt 2> stderr.txt & echo $! > my.pid",
     "test": "node WFS_API.js",
-    "mongod": "mongod --dbpath=db/data --nojournal;"
+    "mongod": "mongod --dbpath=db/data --nojournal;",
+    "see": "ps -eaf | grep 'node'"
   },
   "repository": {
     "type": "git",
