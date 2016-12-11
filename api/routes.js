@@ -12,8 +12,10 @@ var storage = multer.diskStorage({
     filename: function (req, file, cb) {
         var fileName = Date.now() + path.extname(file.originalname);
         cb(null, fileName);
-        if(!req.body.img)
+        if(!req.body.img) {
             req.body.img = [];
+            req.body.thumbnail = fileName;
+        }
         req.body.img.push(config.url + "/static/images/" + fileName);
     }
 });

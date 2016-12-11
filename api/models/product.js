@@ -1,6 +1,7 @@
 var Product   = require('./model').product;
 var utils   = require('../utils');
 var config = require('../config');
+var easyimg = require('easyimage');
 
 module.exports = {
     
@@ -27,6 +28,19 @@ module.exports = {
     postProduct : function(req, res) {
     	var data = utils.mask_obj(req.body, config.model.product);
     	data.seller = req.user._id;
+		var options = {
+			src: "/static/images/" + data.thumbnail, dst: "/static/thumbnails/" + data.thumbnail,
+			width:100, height:100
+		};
+		easyimg.thumbnail(options).then(
+			function(file) {
+				console.log("Succeed thumbnail !");
+				data.thumbnail = config.url + "/static/thumbnails/" + data.thumbnail;
+				console.log(data);
+			}, function (err) {
+				console.log(err);
+			}
+		);
 		console.log(data);
     	/*var product = new Product(data);
     	product.save(function(err) {
