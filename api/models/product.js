@@ -27,7 +27,8 @@ module.exports = {
     postProduct : function(req, res) {
     	var data = utils.mask_obj(req.body, config.model.product);
     	data.seller = req.user._id;
-    	var product = new Product(data);
+		console.log(data);
+    	/*var product = new Product(data);
     	product.save(function(err) {
     		if (err) {
     			res.json({success: false, message:err});
@@ -35,7 +36,7 @@ module.exports = {
     		}
     		console.log('Product send successfully');
     		res.json({success: true, message:"Product send successfully"});
-    	});
+    	});*/
     },
 
 	updateProduct : function(req, res) {

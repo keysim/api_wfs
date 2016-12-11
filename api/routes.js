@@ -17,15 +17,9 @@ var storage = multer.diskStorage({
         req.body.img.push(config.url + "/static/images/" + fileName);
     }
 });
-var upload = multer({ "storage": storage });
-var type = upload.array('files[]');
+var type = multer({ "storage": storage }).array('files[]');
 
 var routes = express.Router();
-
-routes.post('/upload',type,function(req,res){
-    console.log(req.body);
-    res.sendStatus(200);
-});
 
 routes.post("/register", user.register);
 routes.post("/authenticate", user.authenticate);
@@ -45,7 +39,7 @@ routes.get("/", function(req, res) { res.json({message: 'Hi ' + req.user.login})
 routes.post("/user",            user.updateUser);
 routes.get("/user",             user.getUser);                  // Get the current authentified user data
 
-routes.post("/product",         product.postProduct);           // Post a new product
+routes.post('/product', type,   product.postProduct);           // Post a new product
 routes.get("/product/:id",      product.updateProduct);         // Post a new product
 //routes.post("/upload",          upload.upload);                 // Upload thumbnail
 
