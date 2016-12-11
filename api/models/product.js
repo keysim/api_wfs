@@ -24,34 +24,36 @@ module.exports = {
     		res.json(product);
     	});
     },
-    
-    postProduct : function(req, res) {
-    	var data = utils.mask_obj(req.body, config.model.product);
-    	data.seller = req.user._id;
+
+    postProductThumbnail : function(req, res, next) { // MIDDLEWARE THUMBNAIL
 		var options = {
-			src: "./static/images/" + data.thumbnail, dst: "./static/thumbnails/" + data.thumbnail,
-			width:100, height:100
+			src: "./static/images/" + req.body.thumbnail, dst: "./static/thumbnails/" + req.body.thumbnail,
+			width:230, height:230
 		};
 		easyimg.thumbnail(options).then(
 			function(file) {
-				console.log("Succeed thumbnail !");
-				data.thumbnail = config.url + "/static/thumbnails/" + data.thumbnail;
-				console.log(data);
+				req.body.thumbnail = config.url + "/static/thumbnails/" + req.body.thumbnail;
+				return next();
 			}, function (err) {
-				console.log(err);
+				res.json({success: false, message:"Thumbnail error :" + err});
 			}
 		);
-		console.log(data);
-    	/*var product = new Product(data);
-    	product.save(function(err) {
-    		if (err) {
-    			res.json({success: false, message:err});
-    			return console.error(err);
-    		}
-    		console.log('Product send successfully');
-    		res.json({success: true, message:"Product send successfully"});
-    	});*/
     },
+
+	postProduct : function(req, res) {
+		var data = utils.mask_obj(req.body, config.model.product);
+		data.seller = req.user._id;
+		console.log(data);
+		/*var product = new Product(data);
+		 product.save(function(err) {
+		 if (err) {
+		 res.json({success: false, message:err});
+		 return console.error(err);
+		 }
+		 console.log('Product send successfully');
+		 res.json({success: true, message:"Product send successfully"});
+		 });*/
+	},
 
 	updateProduct : function(req, res) {
 		var data = utils.mask_obj(req.body, config.model.product);

@@ -41,7 +41,8 @@ routes.get("/", function(req, res) { res.json({message: 'Hi ' + req.user.login})
 routes.post("/user",            user.updateUser);
 routes.get("/user",             user.getUser);                  // Get the current authentified user data
 
-routes.post('/product', type,   product.postProduct);           // Post a new product
+routes.post('/product', type,   product.postProductThumbnail);  // Post a new product Thumbnail
+routes.post('/product',         product.postProduct);           // Post a new product
 routes.get("/product/:id",      product.updateProduct);         // Post a new product
 //routes.post("/upload",          upload.upload);                 // Upload thumbnail
 
