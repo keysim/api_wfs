@@ -1,18 +1,20 @@
 var express 	= require('express');
 var user        = require('./models/user');
 var product     = require('./models/product');
-//var upload      = require('./models/upload');
 var multer      = require('multer');
+var path        = require('path');
+var config      = require("./config");
 
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, './static/images');
-        //modify upload dest
     },
     filename: function (req, file, cb) {
-        console.log(file);
-        cb(null, file.originalname);
-        //modify file name
+        var fileName = Date.now() + path.extname(file.originalname);
+        cb(null, fileName);
+        if(!req.body.img)
+            req.body.img = [];
+        req.body.img.push(config.url + "/static/images/" + fileName);
     }
 });
 var upload = multer({ "storage": storage });
