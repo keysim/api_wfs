@@ -26,7 +26,7 @@ module.exports = {
     },
 
     postProductThumbnail : function(req, res, next) { // MIDDLEWARE THUMBNAIL
-		/*var options = {
+		var options = {
 			src: "./static/images/" + req.body.thumbnail, dst: "./static/thumbnails/" + req.body.thumbnail,
 			width:230, height:230
 		};
@@ -37,8 +37,7 @@ module.exports = {
 			}, function (err) {
 				res.json({success: false, message:"Thumbnail error :" + err});
 			}
-		);*/
-		console.log("test PAS DERREUR");
+		);
     },
 
 	postProduct : function(req, res) {
