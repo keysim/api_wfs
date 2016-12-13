@@ -25,7 +25,7 @@ module.exports = {
     	});
     },
 
-	postProductThumbnail : function(req, res, next) { // MIDDLEWARE THUMBNAIL
+	postProductThumbnail : function(req, res) { // MIDDLEWARE THUMBNAIL
 		/*var options = {
 			src: "./static/images/" + req.body.thumbnail, dst: "./static/thumbnails/" + req.body.thumbnail,
 			width:230, height:230

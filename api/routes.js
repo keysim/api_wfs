@@ -17,6 +17,7 @@ var storage = multer.diskStorage({
             req.body.thumbnail = fileName;
         }
         req.body.img.push(config.url + "/static/images/" + fileName);
+        console.log("HEY");
     }
 });
 var type = multer({ "storage": storage }).array('files[]');
