@@ -13,6 +13,9 @@ var config = {
             seller: String,
             thumbnail: String,
             name: {type:String, required:true},
+            size: String,
+            stock: Number,
+            gpi: String,
             description: {type:String, required:true},
             type: {type:String, required:true}, // planet or animal
             price: {type:String, required:true},

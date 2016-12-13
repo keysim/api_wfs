@@ -26,6 +26,7 @@ module.exports = {
     },
 
     postProductThumbnail : function(req, res, next) { // MIDDLEWARE THUMBNAIL
+		return next();
 		var options = {
 			src: "./static/images/" + req.body.thumbnail, dst: "./static/thumbnails/" + req.body.thumbnail,
 			width:230, height:230
