@@ -26,6 +26,10 @@ module.exports = {
     },
 
 	postProductThumbnail : function(req, res) { // MIDDLEWARE THUMBNAIL
+		var data = utils.mask_obj(req.body, config.model.product);
+		data.seller = req.user._id;
+		console.log(data);
+		res.json({success: true, message:"haha"});
 		/*var options = {
 			src: "./static/images/" + req.body.thumbnail, dst: "./static/thumbnails/" + req.body.thumbnail,
 			width:230, height:230
