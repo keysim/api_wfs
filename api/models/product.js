@@ -46,6 +46,7 @@ module.exports = {
 		var data = utils.mask_obj(req.body, config.model.product);
 		data.seller = req.user._id;
 		console.log(data);
+		res.json({success: true, message:"haha"});
 		/*var product = new Product(data);
 		 product.save(function(err) {
 		 if (err) {
