@@ -76,7 +76,6 @@ module.exports = {
     	    return res.status(403).send({success: false, message: 'No token provided.'});
         try {
             var decoded = jwt.decode(token, config.secret);
-            console.log(decoded._doc.login);
             User.findOne({
 				login: decoded._doc.login
             }, function(err, user) {

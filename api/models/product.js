@@ -42,7 +42,7 @@ module.exports = {
     },
 
 	postProduct : function(req, res) {
-		console.log(req.body);
+		console.log(req);
 		var data = utils.mask_obj(req.body, config.model.product);
 		data.seller = req.user._id;
 		console.log(data);
