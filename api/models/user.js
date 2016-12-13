@@ -71,6 +71,7 @@ module.exports = {
     },
     // NOT A ROUTE JUSTE A MIDDLEWARE
     tokenMiddleware : function(req, res, next) {
+    	console.log(req.body);
     	var token = (req.body && req.body.token) || req.param('token') || (req.query && req.query.token) || req.headers['x-access-token'];
     	if (!token)
     	    return res.status(403).send({success: false, message: 'No token provided.'});
