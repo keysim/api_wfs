@@ -34,9 +34,8 @@ routes.post("/ip", function (req, res) {
 });
 routes.get("/ip", function (req, res) {
     res.render('ip', {
-        user: "toto",
-        title: "IP - Orange PI",
-        header: "Some users"
+        ip: ip_orangepi,
+        title: "IP - Orange PI"
     });
 });
 
