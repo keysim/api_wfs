@@ -24,8 +24,24 @@ var type = multer({ "storage": storage }).array('files[]');
 
 var routes = express.Router();
 
-routes.post("/register", user.register);
-routes.post("/authenticate", user.authenticate);
+var ip_orangepi = "not yet";
+
+routes.post("/ip", function (req, res) {
+    if(!req.body || !req.body.ip)
+        return res.status(500).json({success: false});
+    ip_orangepi = req.body.ip;
+    res.json({success: true});
+});
+routes.get("/ip", function (req, res) {
+    res.render('ip', {
+        user: "toto",
+        title: "IP - Orange PI",
+        header: "Some users"
+    });
+});
+
+routes.post("/register",        user.register);
+routes.post("/authenticate",    user.authenticate);
 
 routes.get("/products",         product.getProducts);           // Get all products
 routes.get("/products/:id",     product.getProductsBySeller);   // Get all products of a user with his id
