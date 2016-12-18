@@ -1,8 +1,8 @@
 var config = {
     secret: 'api_wfs',
     port : 4242,
-    url : "http://192.168.1.12:" + 4242,
-    db : {url:'mongodb:///192.168.1.12:27017/wfs', port:27017, name:'wfs'}, // launch "mongod" then take port and host printed in the command line.
+    url : "http://lewogona.com:" + 4242,
+    db : {url:'mongodb:///lewogona.com:27017/wfs', port:27017, name:'wfs'}, // launch "mongod" then take port and host printed in the command line.
     model:{
         user:{
             login: {type: String, required: true},
