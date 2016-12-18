@@ -29,7 +29,7 @@ var ip_raspberry = "not yet";
 routes.post("/ip", function (req, res) {
     if(!req.body || !req.body.ip)
         return res.status(500).json({success: false});
-    var d = Date.now();
+    var d = new Date();
     var date = d.getDate() + "-" + (d.getMonth() + 1) + "-" + d.getFullYear() + " " + d.getHours() + "h" + d.getMinutes();
     ip_raspberry = "IP = " + req.body.ip + " at " + date;
     res.json({success: true});
