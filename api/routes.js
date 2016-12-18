@@ -24,18 +24,20 @@ var type = multer({ "storage": storage }).array('files[]');
 
 var routes = express.Router();
 
-var ip_orangepi = "not yet";
+var ip_raspberry = "not yet";
 
 routes.post("/ip", function (req, res) {
     if(!req.body || !req.body.ip)
         return res.status(500).json({success: false});
-    ip_orangepi = req.body.ip;
+    var d = Date.now();
+    var date = d.getDate() + "-" + (d.getMonth() + 1) + "-" + d.getFullYear() + " " + d.getHours() + "h" + d.getMinutes();
+    ip_raspberry = "IP = " + req.body.ip + " at " + date;
     res.json({success: true});
 });
 routes.get("/ip", function (req, res) {
     res.render('ip', {
-        ip: ip_orangepi,
-        title: "IP - Orange PI"
+        ip: ip_raspberry,
+        title: "IP - Raspberry PI"
     });
 });
 
