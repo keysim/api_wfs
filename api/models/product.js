@@ -28,8 +28,6 @@ module.exports = {
 	postProductThumbnail : function(req, res, next) { // MIDDLEWARE THUMBNAIL
 		var data = utils.mask_obj(req.body, config.model.product);
 		data.seller = req.user._id;
-		//console.log(data);
-		//res.json({success: true, message:data});
 		var options = {
 			src: "./static/images/" + req.body.thumbnail, dst: "./static/thumbnails/" + req.body.thumbnail,
 			width:230, height:230
@@ -45,11 +43,9 @@ module.exports = {
     },
 
 	postProduct : function(req, res) {
-		console.log(req.body);
 		var data = utils.mask_obj(req.body, config.model.product);
 		data.seller = req.user._id;
 		console.log(data);
-		res.json({success: true, message:"haha"});
 		var product = new Product(data);
 		product.save(function(err) {
 			if (err) {
