@@ -25,7 +25,7 @@ module.exports = {
     	});
     },
 
-	postProductThumbnail : function(req, res) { // MIDDLEWARE THUMBNAIL
+	postProductThumbnail : function(req, res, next) { // MIDDLEWARE THUMBNAIL
 		var data = utils.mask_obj(req.body, config.model.product);
 		data.seller = req.user._id;
 		//console.log(data);
