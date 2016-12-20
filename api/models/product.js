@@ -28,9 +28,9 @@ module.exports = {
 	postProductThumbnail : function(req, res) { // MIDDLEWARE THUMBNAIL
 		var data = utils.mask_obj(req.body, config.model.product);
 		data.seller = req.user._id;
-		console.log(data);
-		res.json({success: true, message:data});
-		/*var options = {
+		//console.log(data);
+		//res.json({success: true, message:data});
+		var options = {
 			src: "./static/images/" + req.body.thumbnail, dst: "./static/thumbnails/" + req.body.thumbnail,
 			width:230, height:230
 		};
@@ -41,8 +41,7 @@ module.exports = {
 			}, function (err) {
 				res.json({success: false, message:"Thumbnail error :" + err});
 			}
-		);*/
-		console.log("test PAS DERREUR");
+		);
     },
 
 	postProduct : function(req, res) {
@@ -51,15 +50,15 @@ module.exports = {
 		data.seller = req.user._id;
 		console.log(data);
 		res.json({success: true, message:"haha"});
-		/*var product = new Product(data);
-		 product.save(function(err) {
-		 if (err) {
-		 res.json({success: false, message:err});
-		 return console.error(err);
-		 }
-		 console.log('Product send successfully');
-		 res.json({success: true, message:"Product send successfully"});
-		 });*/
+		var product = new Product(data);
+		product.save(function(err) {
+			if (err) {
+				res.json({success: false, message:err});
+				return console.error(err);
+			}
+			console.log('Product send successfully');
+			res.json({success: true, message:"Product send successfully"});
+		});
 	},
 
 	updateProduct : function(req, res) {
