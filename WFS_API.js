@@ -49,10 +49,8 @@ app.use(function (req, res, next) {
 });
 
 app.get('/', function(req, res) {
-	res.send('The site !');
+	res.send('API is running at /api');
 });
 
 app.use('/api', routes);
 app.listen(config.port);
-
-console.log('Magic happens at ' + config.url + "/api");

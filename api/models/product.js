@@ -34,7 +34,7 @@ module.exports = {
 		};
 		easyimg.thumbnail(options).then(
 			function(file) {
-				req.body.thumbnail = config.url + "/static/thumbnails/" + req.body.thumbnail;
+				req.body.thumbnail = "/static/thumbnails/" + req.body.thumbnail;
 				return next();
 			}, function (err) {
 				res.json({success: false, message:"Thumbnail error :" + err});
