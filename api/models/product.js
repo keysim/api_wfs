@@ -83,14 +83,12 @@ module.exports = {
     },
 
 	deleteProduct : function(req, res) {
-		Product.find({
-			seller: req.params.id
-		}, function(err, products) {
-			if (err || !products) {
-				res.status(404).json({success: false, message: 'Products not found.'});
+		Product.findOne({_id: req.params.id}).remove( function(err) {
+			if (err) {
+				res.json({success: false, message: 'Product not found.'});
 				return console.error(err);
 			}
-			res.json(products);
+			res.json({success: true, message: 'Product deleted.'});
 		});
 	}
 };
