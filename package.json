@@ -15,7 +15,12 @@
     "mongoose": "^4.4.5",
     "morgan": "^1.7.0",
     "multer": "^1.2.0",
-    "socket.io": "^1.7.1"
+    "socket.io": "^1.7.1",
+    "wdio-mocha-framwork": "0.4.0,",
+    "wdio-sauce-service": "0.2.4",
+    "wdio-spec-reporter" : "0.0.3",
+    "webdriverio" : "4.2.5",
+    "mocha" : "2.2.4"
   },
   "devDependencies": {},
   "scripts": {

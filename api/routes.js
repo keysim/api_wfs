@@ -60,7 +60,7 @@ routes.get("/user",             user.getUser);                  // Get the curre
 
 routes.post('/product', type,   product.postProductThumbnail);  // Post a new product Thumbnail
 routes.post('/product',         product.postProduct);           // Post a new product
-routes.get("/product/:id",      product.updateProduct);         // Post a new product
+routes.update("/product/:id",      product.updateProduct);         // Post a new product
 routes.delete("/product/:id",   product.deleteProduct);        // Get a product by id
 //routes.post("/upload",          upload.upload);                 // Upload thumbnail
 
