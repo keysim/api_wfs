@@ -28,8 +28,7 @@
     "start": "node WFS_API.js > stdout.txt 2> stderr.txt & echo $! > my.pid",
     "restart": "npm stop; npm start",
     "test": "node WFS_API.js",
-    "mongod": "mongod --dbpath=db/data --nojournal;",
-    "see": "ps -eaf | grep 'node'"
+    "mongod": "mongod --dbpath=db/data --nojournal;"
   },
   "repository": {
     "type": "git",

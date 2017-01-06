@@ -42,26 +42,21 @@ routes.get("/ip", function (req, res) {
 
 routes.post("/register",        user.register);
 routes.post("/authenticate",    user.authenticate);
-
-routes.get("/products",         product.getProducts);           // Get all products
-routes.get("/products/:id",     product.getProductsBySeller);   // Get all products of a user with his id
-routes.get("/product/:id",      product.getProductById);        // Get a product by id
-routes.get("/users",            user.getUsers);                 // Get all the users
-routes.get("/user/:id",         user.getUserById);              // Get user by them id
-
+routes.get("/products",         product.getProducts);
+routes.get("/products/:id",     product.getProductsBySeller);
+routes.get("/product/:id",      product.getProductById);
+routes.get("/users",            user.getUsers);
+routes.get("/user/:id",         user.getUserById);
 // =================================================================
 // authenticated routes ============================================
 // =================================================================
 routes.use(user.tokenMiddleware);
-routes.get("/", function(req, res) { res.json({message: 'Hi ' + req.user.login}); }); // Say hi to the authenticate user
-
+routes.get("/", function(req, res) { res.json({message: 'Hi ' + req.user.login}); });
 routes.post("/user",            user.updateUser);
-routes.get("/user",             user.getUser);                  // Get the current authentified user data
-
-routes.post('/product', type,   product.postProductThumbnail);  // Post a new product Thumbnail
-routes.post('/product',         product.postProduct);           // Post a new product
-routes.update("/product/:id",      product.updateProduct);         // Post a new product
-routes.delete("/product/:id",   product.deleteProduct);        // Get a product by id
-//routes.post("/upload",          upload.upload);                 // Upload thumbnail
+routes.get("/user",             user.getUser);
+routes.post('/product', type,   product.postProductThumbnail);
+routes.post('/product',         product.postProduct);
+routes.update("/product/:id",      product.updateProduct);
+routes.delete("/product/:id",   product.deleteProduct);
 
 module.exports = routes;
