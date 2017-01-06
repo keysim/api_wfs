@@ -56,7 +56,7 @@ routes.post("/user",            user.updateUser);
 routes.get("/user",             user.getUser);
 routes.post('/product', type,   product.postProductThumbnail);
 routes.post('/product',         product.postProduct);
-routes.update("/product/:id",      product.updateProduct);
+//routes.update("/product/:id",      product.updateProduct);
 routes.delete("/product/:id",   product.deleteProduct);
 
 module.exports = routes;
